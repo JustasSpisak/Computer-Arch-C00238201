@@ -1,14 +1,29 @@
 *-----------------------------------------------------------
-* Title      :ASM II
-* Written by :Justas Spisak
-* Date       :19/01/22
-* Description:Question 1
+* Title      :
+* Written by :
+* Date       :
+* Description:
 *-----------------------------------------------------------
     ORG    $1000
-START:                 
+START:                  ; first instruction of program
+    LEA MESSAGE,A1
+    MOVE.B #14,D0
+    TRAP #15
+    
+    MOVE.B #4,D0
+    TRAP #15
+    
+    MOVE.B #9,D0
+    TRAP #15
+    
+    
+MESSAGE DC.B 'Enter Gamer Points;  ' ,0
+    SIMHALT             ; halt simulator
 
-    SIMHALT             
-    END    START
+
+* Put variables and constants here
+
+    END    START        ; last line of source
 
 *~Font name~Courier New~
 *~Font size~10~
