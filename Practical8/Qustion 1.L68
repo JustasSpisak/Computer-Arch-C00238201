@@ -1,6 +1,6 @@
 00001000 Starting Address
 Assembler used: EASy68K Editor/Assembler v5.15.04
-Created On: 19/01/2022 16:19:03
+Created On: 19/01/2022 16:46:33
 
 00000000                             1  *-----------------------------------------------------------
 00000000                             2  * Title      :
@@ -13,23 +13,24 @@ Created On: 19/01/2022 16:19:03
 00001000  43F9 0000101C              9      LEA MESSAGE,A1
 00001006  103C 000E                 10      MOVE.B #14,D0
 0000100A  4E4F                      11      TRAP #15
-0000100C  45F9 00001032             12      LEA MESSAGE1,A2
-00001012                            13      
-00001012  103C 0004                 14      MOVE.B #4,D0
-00001016  11C0 1600                 15      MOVE.B D0,$1600
-0000101A  4E4F                      16      TRAP #15
-0000101C                            17      
-0000101C                            18  
-0000101C                            19      
-0000101C                            20      
-0000101C= 45 6E 74 65 72 20 ...     21  MESSAGE DC.B 'Enter Gamer Points;  ' ,0
-00001032= 4E 75 6D 62 65 72 ...     22  MESSAGE1 DC.B 'Number of points is',0
-00001046                            23      
-00001046                            24  
-00001046                            25  
-00001046                            26  * Put variables and constants here
-00001046                            27  
-00001046                            28      END    START        ; last line of source
+0000100C                            12      
+0000100C                            13      
+0000100C  1480                      14      MOVE.B D0,(A2)
+0000100E  103C 0004                 15      MOVE.B #4,D0
+00001012  11C0 1600                 16      MOVE.B D0,$1600
+00001016  4E4F                      17      TRAP #15
+00001018                            18   
+00001018  =0000000D                 19  CR EQU $0D
+00001018  =0000000A                 20  LF EQU $0A
+00001018                            21  
+00001018                            22  
+00001018  FFFF FFFF                 23      SIMHALT
+0000101C                            24  
+0000101C= 45 6E 74 65 72 20 ...     25  MESSAGE DC.B 'Enter Gamer Points;  ' ,CR,LF 
+00001033= 4E 75 6D 62 65 72 ...     26  MESSAGE1 DC.B 'Number of points is',CR,LF,0
+00001049                            27  * Put variables and constants here
+00001049                            28  
+00001049                            29      END    START        ; last line of source
 
 No errors detected
 No warnings generated
@@ -38,6 +39,8 @@ No warnings generated
 SYMBOL TABLE INFORMATION
 Symbol-name         Value
 -------------------------
+CR                  D
+LF                  A
 MESSAGE             101C
-MESSAGE1            1032
+MESSAGE1            1033
 START               1000
